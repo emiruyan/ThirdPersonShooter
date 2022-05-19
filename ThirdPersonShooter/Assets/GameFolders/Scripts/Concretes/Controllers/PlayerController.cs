@@ -1,18 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using ThirdPersonShooter.Abstracts.Inputs;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+namespace ThirdPersonShooter.Controllers
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerController : MonoBehaviour
     {
-        
-    }
+        private IInputReader _input;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Awake()
+        {
+            _input = GetComponent<IInputReader>();
+        } 
+
+        private void Update()
+        { 
+            Debug.Log((_input.Direction));
+        }
     }
 }
+
+

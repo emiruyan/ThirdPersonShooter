@@ -15,7 +15,8 @@ namespace ThirdPersonShooter.Movements
             _characterController = playerController.GetComponent<CharacterController>();
             
         }
-        
+
+                
         public void MoveAction(Vector3 direction, float moveSpeed)
         {
             if (direction.magnitude == 0f) return;
@@ -26,7 +27,9 @@ namespace ThirdPersonShooter.Movements
             
             
             _characterController.Move(movement);
-        } 
+        }
+
+        public float Velocity { get; }
     }
 }
 

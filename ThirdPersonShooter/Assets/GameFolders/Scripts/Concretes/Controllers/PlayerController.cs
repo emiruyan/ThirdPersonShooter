@@ -35,7 +35,12 @@ namespace ThirdPersonShooter.Controllers
 
         void FixedUpdate()
         {
-            _mover.MoveAction(_direction, _moveSpeed);
+             _mover.MoveAction(_direction, _moveSpeed);
+        }
+
+        private void LateUpdate()
+        {
+             _animation.MoveAnimation(_direction.magnitude);
         }
     }
 }

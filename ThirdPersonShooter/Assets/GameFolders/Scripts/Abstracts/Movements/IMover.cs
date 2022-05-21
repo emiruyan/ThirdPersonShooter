@@ -8,6 +8,7 @@ namespace ThirdPersonShooter.Abstracts.Movements
     {
 
         void MoveAction(Vector3 direction, float _moveSpeed);
+        float Velocity { get; }
 
     }
 }

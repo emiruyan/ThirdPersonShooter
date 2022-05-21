@@ -14,8 +14,12 @@ namespace ThirdPersonShooter.Animations
             _animator = entity.GetComponentInChildren<Animator>();
         }
 
-        public void MoveAnimations()
+        public void MoveAnimation(float moveSpeed)
         {
+            if (_animator.GetFloat("moveSpeed") == moveSpeed) return;
+           
+            
+            _animator.SetFloat("moveSpeed", moveSpeed,  0.1f,Time.deltaTime);
         }
     }
 }

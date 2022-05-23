@@ -318,6 +318,7 @@ GameObject:
   - component: {fileID: 900975750}
   - component: {fileID: 900975749}
   - component: {fileID: 900975751}
+  - component: {fileID: 900975752}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -480,6 +481,19 @@ MonoBehaviour:
   _turnSpeed: 10
   _turnTransform: {fileID: 1971493834}
   _currentWeapon: {fileID: 1935343029}
+--- !u!114 &900975752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900975745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceaf7c4134229b344bcea55cf5ba96d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gravity: -11
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,7 +630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc127c674ca35b9428a7b13d1d25550d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc127c674ca35b9428a7b13d1d25550d, type: 3}
       propertyPath: m_LocalPosition.z

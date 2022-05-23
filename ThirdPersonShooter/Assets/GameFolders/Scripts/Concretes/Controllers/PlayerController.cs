@@ -15,6 +15,7 @@ namespace ThirdPersonShooter.Controllers
         [SerializeField] float _moveSpeed = 10f;
         [SerializeField] float _turnSpeed = 10f;
         [SerializeField] Transform _turnTransform;
+        [SerializeField] WeaponController _currentWeapon;
         
         IInputReader _input; 
         IMover _mover;
@@ -46,6 +47,13 @@ namespace ThirdPersonShooter.Controllers
             
             _xRotator.RotationAction(_input.Rotation.x,_turnSpeed);
             _yRotator.RotationAction(_input.Rotation.y,_turnSpeed);
+
+           
+            
+            if (_input.IsAttackButtonPress)
+            {
+                _currentWeapon.Attack();
+            }
         }
 
         void FixedUpdate()

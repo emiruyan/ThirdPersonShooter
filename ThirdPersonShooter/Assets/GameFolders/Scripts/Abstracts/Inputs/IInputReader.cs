@@ -6,5 +6,6 @@ namespace ThirdPersonShooter.Abstracts.Inputs
     {
         Vector3 Direction { get; }
         Vector2 Rotation { get; }
+        public bool IsAttackButtonPress { get; }
     }
 }

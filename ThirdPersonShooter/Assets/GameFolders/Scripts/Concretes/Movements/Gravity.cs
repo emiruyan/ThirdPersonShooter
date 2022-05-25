@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 namespace ThirdPersonShooter.Movements
 {
+    [RequireComponent(typeof(CharacterController))] //Character Controller componentini bir yere atadığımızda gravity bu componenti takip edicek ve çıkaramacayacağız
     public class Gravity : MonoBehaviour
     {
         [SerializeField] float _gravity;

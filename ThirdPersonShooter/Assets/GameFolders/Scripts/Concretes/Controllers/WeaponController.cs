@@ -13,6 +13,9 @@ namespace ThirdPersonShooter.Controllers
         [SerializeField] float _distance = 100f;
         [SerializeField] LayerMask _layerMask;
 
+        public GameObject _crossHair;
+        
+
         private float _currentTime = 0f;
 
         private void Update()
@@ -27,11 +30,11 @@ namespace ThirdPersonShooter.Controllers
         {
             if (!_canFire) return;
 
-            Ray ray = _camera.ViewportPointToRay(Vector3.one / 2f);
+            Ray ray = _camera.ScreenPointToRay(_crossHair.transform.position);
 
             if (Physics.Raycast(ray,out RaycastHit hit,_distance, _layerMask))
             {
-                Debug.Log(hit.collider.gameObject.name);
+                Debug.Log(hit.point);
             }
 
             _currentTime = 0f;

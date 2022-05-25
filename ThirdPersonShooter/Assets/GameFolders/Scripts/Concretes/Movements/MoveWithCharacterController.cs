@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ThirdPersonShooter.Abstracts.Controllers;
 using ThirdPersonShooter.Abstracts.Movements;
 using ThirdPersonShooter.Controllers;
 using UnityEngine;
@@ -10,9 +11,9 @@ namespace ThirdPersonShooter.Movements
     {
         private CharacterController _characterController;
         
-        public MoveWithCharacterController(PlayerController playerController)
+        public MoveWithCharacterController(IEntityController entityController)
         {
-            _characterController = playerController.GetComponent<CharacterController>();
+            _characterController = entityController.transform.GetComponent<CharacterController>();
             
         }
 

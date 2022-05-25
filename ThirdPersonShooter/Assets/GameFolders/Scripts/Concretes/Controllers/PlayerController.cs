@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ThirdPersonShooter.Abstracts.Controllers;
 using ThirdPersonShooter.Abstracts.Inputs;
 using ThirdPersonShooter.Abstracts.Movements;
 using ThirdPersonShooter.Animations;
@@ -9,7 +10,7 @@ using UnityEngine;
 
 namespace ThirdPersonShooter.Controllers
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour , IEntityController
     {
         [Header("Movement Informations")] 
         [SerializeField] float _moveSpeed = 10f;

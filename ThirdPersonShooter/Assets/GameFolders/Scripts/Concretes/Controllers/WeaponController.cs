@@ -29,14 +29,12 @@ namespace ThirdPersonShooter.Controllers
 
             Ray ray = _camera.ViewportPointToRay(Vector3.one / 2f);
 
-            if (Physics.Raycast(ray, out RaycastHit hit,_distance, _layerMask))
+            if (Physics.Raycast(ray,out RaycastHit hit,_distance, _layerMask))
             {
                 Debug.Log(hit.collider.gameObject.name);
             }
 
             _currentTime = 0f;
-
-
         }
     }
 }

@@ -14,7 +14,7 @@ namespace ThirdPersonShooter.Controllers
         [Header("Movement Informations")] 
         [SerializeField] float _moveSpeed = 10f;
         [SerializeField] float _turnSpeed = 10f;
-        [SerializeField] Transform _turnTransform;
+        [SerializeField] Transform _turnTransform; 
         [SerializeField] WeaponController _currentWeapon;
         
         IInputReader _input; 

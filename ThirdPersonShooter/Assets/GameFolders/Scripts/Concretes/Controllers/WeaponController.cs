@@ -28,7 +28,7 @@ namespace ThirdPersonShooter.Controllers
 
         private void Awake()
         {
-            _attackType = new RangeAttackType(_transformObject, _attackSo);
+            _attackType = _attackSo.GetAttackType(_transformObject); 
         }
 
         private void Update()

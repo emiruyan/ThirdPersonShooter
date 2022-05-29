@@ -43,7 +43,6 @@ namespace ThirdPersonShooter.Controllers
         {
             if (!_canFire) return;
 
-            
             _attackType.AttackAction(); 
 
             _currentTime = 0f;

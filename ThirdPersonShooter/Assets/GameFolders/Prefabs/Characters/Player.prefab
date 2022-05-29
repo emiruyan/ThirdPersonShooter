@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 3235004726449832403}
   - component: {fileID: 3235004726449832401}
   - component: {fileID: 3235004726449832414}
+  - component: {fileID: 2458509525560833557}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -225,6 +226,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gravity: -11
+--- !u!114 &2458509525560833557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3235004726449832407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190613c7d93da8348a91c6a21d9ed3dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthInfo: {fileID: 11400000, guid: 647f7f6af971a634cb8322b671390f2f, type: 2}
 --- !u!1 &3235004726484437316
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,6 +690,7 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 1
+  _crossHair: {fileID: 3235004726490397881}
 --- !u!1 &3235004727537819893
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +736,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3235004726274231385}
     m_Modifications:
+    - target: {fileID: 17754631688446733, guid: 57a9614ff5329ed41bc126b55eb5dc8d, type: 3}
+      propertyPath: Damping.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 17754631688446733, guid: 57a9614ff5329ed41bc126b55eb5dc8d, type: 3}
+      propertyPath: Damping.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 17754631688446733, guid: 57a9614ff5329ed41bc126b55eb5dc8d, type: 3}
+      propertyPath: Damping.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 17754631966080721, guid: 57a9614ff5329ed41bc126b55eb5dc8d, type: 3}
       propertyPath: m_Follow
       value: 

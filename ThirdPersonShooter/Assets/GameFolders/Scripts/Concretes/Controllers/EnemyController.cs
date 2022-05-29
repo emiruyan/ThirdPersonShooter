@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ThirdPersonShooter.Abstracts.Combats;
 using ThirdPersonShooter.Abstracts.Controllers;
 using ThirdPersonShooter.Abstracts.Movements;
 using ThirdPersonShooter.Animations;
@@ -14,6 +15,7 @@ namespace ThirdPersonShooter.Controllers
     {
         [SerializeField] Transform _playerPrefab;
 
+        IHealth _health;
         IMover _mover;
         CharacterAnimation _animation;
         NavMeshAgent _navMeshAgent;
@@ -23,10 +25,13 @@ namespace ThirdPersonShooter.Controllers
             _mover = new MoveWithNavMesh(this);
             _animation = new CharacterAnimation(this);
             _navMeshAgent = GetComponent<NavMeshAgent>();
+            _health = GetComponent<IHealth>();
         }
 
         private void Update()
         {
+            if (_health.IsDead ) return;
+
             _mover.MoveAction(_playerPrefab.transform.position, 10f);
         }
 

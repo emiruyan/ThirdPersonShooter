@@ -19,3 +19,4 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 2147483647
+  _animatorOverride: {fileID: 22100000, guid: c13d70622c5ae2741b9ce3b2bb191313, type: 2}

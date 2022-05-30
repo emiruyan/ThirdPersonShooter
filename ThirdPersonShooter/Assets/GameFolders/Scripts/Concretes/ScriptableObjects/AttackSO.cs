@@ -14,15 +14,17 @@ namespace ThirdPersonShooter.ScriptableObjects
     [CreateAssetMenu(fileName = "Attack Info",menuName = "AttackInformation/Create New",order = 51)]
     public class AttackSO : ScriptableObject
     {
-        [SerializeField] private AttackTypeEnum _attackType;
+        [SerializeField] AttackTypeEnum _attackType;
         [SerializeField] int _damage = 10; 
         [SerializeField] float _floatValue = 1f;
         [SerializeField] float _attackMaxDelay = 0.25f;
         [SerializeField] LayerMask _layerMask;
+        [SerializeField] AnimatorOverrideController _animatorOverride;
         public int Damage => _damage;
         public float FloatValue => _floatValue; 
         public LayerMask LayerMask => _layerMask;
         public float AttackMaxDelay => _attackMaxDelay;
+        public AnimatorOverrideController AnimatorOverride => _animatorOverride;
 
         public IAttackType GetAttackType(Transform transform)
         {

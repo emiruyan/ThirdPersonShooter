@@ -16,13 +16,14 @@ namespace ThirdPersonShooter.Controllers
         [SerializeField] float _moveSpeed = 10f;
         [SerializeField] float _turnSpeed = 10f;
         [SerializeField] Transform _turnTransform; 
-        [SerializeField] WeaponController _currentWeapon;
+        
         
         IInputReader _input; 
         IMover _mover;
         IRotator _xRotator;
         IRotator _yRotator;
         CharacterAnimation _animation;
+        private InvertoryController _invertory;
         
         Vector3 _direction;
        
@@ -39,6 +40,7 @@ namespace ThirdPersonShooter.Controllers
             _animation = new CharacterAnimation(this);
             _xRotator = new RotatorX(this);
             _yRotator = new RotatorY(this);
+            _invertory = GetComponent<InvertoryController>();
         } 
 
         void Update()
@@ -53,7 +55,12 @@ namespace ThirdPersonShooter.Controllers
             
             if (_input.IsAttackButtonPress)
             {
-                _currentWeapon.Attack();
+                _invertory.CurrentWeapon.Attack();
+            }
+
+            if (_input.IsInventoryButtonPressed)
+            { 
+                _invertory.ChangeWeapon();
             }
         }
 

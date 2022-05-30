@@ -25,6 +25,7 @@ namespace ThirdPersonShooter.Controllers
         
         private float _currentTime = 0f;
         private IAttackType _attackType;
+        public AttackSO AttackSo => _attackSo;
 
         private void Awake()
         {

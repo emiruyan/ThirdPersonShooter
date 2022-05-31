@@ -22,7 +22,7 @@ namespace ThirdPersonShooter.Animations
             
             _animator.SetFloat("moveSpeed", moveSpeed,  0.1f,Time.deltaTime);
         }
-    }
+    } 
 }
 
 

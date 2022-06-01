@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace ThirdPersonShooter.Controllers
 {
-    public class InvertoryController : MonoBehaviour
+    public class InventoryController : MonoBehaviour
     {
         [SerializeField] WeaponController[] _weapons; 
-         Animator _animator;
+        Animator _animator;
         
         public WeaponController CurrentWeapon { get;private set; }
 

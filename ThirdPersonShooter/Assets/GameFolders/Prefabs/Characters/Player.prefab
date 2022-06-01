@@ -877,7 +877,7 @@ PrefabInstance:
       objectReference: {fileID: 3235004727526807196}
     - target: {fileID: 17754631966080721, guid: 57a9614ff5329ed41bc126b55eb5dc8d, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.660666
+      value: 0.9587688
       objectReference: {fileID: 0}
     - target: {fileID: 17754631966080734, guid: 57a9614ff5329ed41bc126b55eb5dc8d, type: 3}
       propertyPath: m_RootOrder

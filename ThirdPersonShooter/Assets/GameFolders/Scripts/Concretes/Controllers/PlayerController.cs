@@ -23,7 +23,7 @@ namespace ThirdPersonShooter.Controllers
         IRotator _xRotator;
         IRotator _yRotator;
         CharacterAnimation _animation;
-        private InvertoryController _invertory;
+        private InventoryController _ınventory;
         
         Vector3 _direction;
        
@@ -40,7 +40,7 @@ namespace ThirdPersonShooter.Controllers
             _animation = new CharacterAnimation(this);
             _xRotator = new RotatorX(this);
             _yRotator = new RotatorY(this);
-            _invertory = GetComponent<InvertoryController>();
+            _ınventory = GetComponent<InventoryController>();
         } 
 
         void Update()
@@ -55,12 +55,12 @@ namespace ThirdPersonShooter.Controllers
             
             if (_input.IsAttackButtonPress)
             {
-                _invertory.CurrentWeapon.Attack();
+                _ınventory.CurrentWeapon.Attack();
             }
 
             if (_input.IsInventoryButtonPressed)
             { 
-                _invertory.ChangeWeapon();
+                _ınventory.ChangeWeapon();
             }
         }
 

@@ -12,24 +12,17 @@ namespace ThirdPersonShooter.Controllers
     {
         
         [SerializeField] bool _canFire;
-        
         [SerializeField] Transform  _transformObject;
         [SerializeField] private AttackSO _attackSo;
         
-        
-        
-        
         //public GameObject _crossHair;
-        
-
         
         private float _currentTime = 0f;
         private IAttackType _attackType;
         public AttackSO AttackSo => _attackSo;
 
         private void Awake()
-        {
-            _attackType = _attackSo.GetAttackType(_transformObject); 
+        { _attackType = _attackSo.GetAttackType(_transformObject); 
         }
 
         private void Update()
@@ -37,7 +30,6 @@ namespace ThirdPersonShooter.Controllers
             _currentTime += Time.deltaTime;
 
             _canFire = _currentTime > _attackSo.AttackMaxDelay;
-
         }
 
         public void Attack()

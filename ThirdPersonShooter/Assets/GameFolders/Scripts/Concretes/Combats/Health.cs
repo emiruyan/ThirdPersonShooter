@@ -1,6 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using ThirdPersonShooter.Abstracts.Combats;
 using ThirdPersonShooter.ScriptableObjects;
 using UnityEngine;
@@ -12,6 +10,7 @@ namespace  ThirdPersonShooter.Combats
         [SerializeField] HealthSO _healthInfo;
         
         int _currentHealth;
+        public event System.Action<int, int> OnTakeHit;
 
         public bool IsDead => _currentHealth <= 0;
 
@@ -27,6 +26,8 @@ namespace  ThirdPersonShooter.Combats
             if (IsDead) return;
             
             _currentHealth -= damage;
+            
+            OnTakeHit?.Invoke(_currentHealth, _healthInfo.MaxHealth);
         }
     }
 

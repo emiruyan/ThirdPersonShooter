@@ -1,13 +1,12 @@
-
 using System.Collections.Generic;
-using ThirdPersonShooter.States;
 using ThirdPersonShooter.Abstracts.States;
+
 
 namespace ThirdPersonShooter.States
 {
     public class StateMachine
-    {
-        List<StateTransformer> _stateTransformers = new List<StateTransformer>(); 
+    { 
+        List<StateTransformer> _stateTransformers = new List<StateTransformer>();
         List<StateTransformer> _anyStateTransformer = new List<StateTransformer>();
 
         IState _currentState;
@@ -24,9 +23,10 @@ namespace ThirdPersonShooter.States
         public void Tick()
         {
             StateTransformer stateTransformer = CheckForTransformer();
+            
             if (stateTransformer != null);
             {
-                SetState(stateTransformer.To);
+                if (stateTransformer != null) SetState(stateTransformer.To); //****
             }
             _currentState.Tick();
         }
@@ -35,7 +35,7 @@ namespace ThirdPersonShooter.States
         {
             foreach (StateTransformer stateTransformer in _anyStateTransformer)
             {
-                if (stateTransformer.Condition.Invoke()) return stateTransformer;
+                if (stateTransformer.Condition.Invoke()) return stateTransformer; 
             }
 
             foreach (StateTransformer stateTransformer in _stateTransformers)
@@ -47,7 +47,7 @@ namespace ThirdPersonShooter.States
         }
 
         public void AddState(IState from,IState to, System.Func<bool> condition)
-        {
+         {
             StateTransformer stateTransformer = new StateTransformer(from, to, condition);
             _stateTransformers.Add(stateTransformer);
         }
@@ -56,7 +56,7 @@ namespace ThirdPersonShooter.States
         //to nereye gideceği
 
         public void AddAnyState(IState to,System.Func<bool>condition)
-        {
+        {   
             StateTransformer stateTransformer = new StateTransformer(null, to, condition);
             _anyStateTransformer.Add(stateTransformer);
         }

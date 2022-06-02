@@ -6,6 +6,8 @@ using ThirdPersonShooter.Abstracts.Controllers;
 using ThirdPersonShooter.Abstracts.Movements;
 using ThirdPersonShooter.Animations;
 using ThirdPersonShooter.Movements;
+using ThirdPersonShooter.States;
+using ThirdPersonShooter.States.EnemyStates;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,10 +19,14 @@ namespace ThirdPersonShooter.Controllers
         IMover _mover;
         CharacterAnimation _animation;
         NavMeshAgent _navMeshAgent;
-        InventoryController _inventoryController;
+        InventoryController _inventoryController; 
+        StateMachine _stateMachine;
 
         Transform _playerTransform;
         bool _canAttack;
+
+        public bool CanAttack => Vector3.Distance(_playerTransform.position,this.transform.position) < _navMeshAgent.stoppingDistance && _navMeshAgent.velocity==Vector3.zero;
+
 
         private void Awake()
         {
@@ -29,20 +35,32 @@ namespace ThirdPersonShooter.Controllers
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _health = GetComponent<IHealth>();
             _inventoryController = GetComponent<InventoryController>();
+            _stateMachine = new StateMachine();
         }
 
         private void Start()
         {
             _playerTransform = FindObjectOfType<PlayerController>().transform;
+
+            AttackState attackState = new AttackState();
+            ChaseState chaseState = new ChaseState();
+            DeadState deadState = new DeadState();
+            
+            _stateMachine.AddState(chaseState, attackState,() => CanAttack);
+            _stateMachine.AddState(attackState, chaseState, ()=> !CanAttack);
+            _stateMachine.AddAnyState(deadState, () => _health.IsDead);
+            
+            _stateMachine.SetState(chaseState);
+
         }
 
         private void Update()
         { 
             if (_health.IsDead ) return;
+            
+            _mover.MoveAction(_playerTransform.position, 10f); //enemy tam durduğunda attack yapmaya başlıyor
 
-            _mover.MoveAction(_playerTransform.position, 10f);
-                                                                                                                                     //enemy tam durduğunda attack yapmaya başlıyor
-            _canAttack = Vector3.Distance(_playerTransform.position,this.transform.position) < _navMeshAgent.stoppingDistance && _navMeshAgent.velocity==Vector3.zero;
+            _stateMachine.Tick();
         }
 
         private void FixedUpdate()
@@ -62,4 +80,4 @@ namespace ThirdPersonShooter.Controllers
     }
 }
 
-
+ 

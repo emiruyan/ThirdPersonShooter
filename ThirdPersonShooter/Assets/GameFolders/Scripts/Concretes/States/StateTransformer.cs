@@ -9,14 +9,14 @@ namespace ThirdPersonShooter.States
 {
     public class StateTransformer
     {
-        public IState To { get; }
-        public IState From { get; }
-        public Func<bool> Condition { get; }
+        public IState To { get;}
+        public IState From { get;}
+        public Func<bool> Condition { get;}
 
-        public StateTransformer(IState to, IState from, Func<bool> condition)
+        public StateTransformer(IState from, IState to, Func<bool> condition)
         {
-            To = to;
             From = from;
+            To = to;
             Condition = condition;
 
         }

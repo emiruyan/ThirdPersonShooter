@@ -11,7 +11,7 @@ namespace ThirdPersonShooter.States
     {
         public IState To { get; }
         public IState From { get; }
-        public System.Func<bool> Condition { get; }
+        public Func<bool> Condition { get; }
 
         public StateTransformer(IState to, IState from, Func<bool> condition)
         {

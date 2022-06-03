@@ -16,7 +16,7 @@ namespace ThirdPersonShooter.Controllers
     public class EnemyController : MonoBehaviour, IEntityController
     {
         IHealth _health;
-        IMover _mover;
+        
         CharacterAnimation _animation;
         NavMeshAgent _navMeshAgent;
         InventoryController _inventoryController; 
@@ -24,13 +24,15 @@ namespace ThirdPersonShooter.Controllers
 
         Transform _playerTransform;
         bool _canAttack;
+        
+        public IMover Mover { get;private set; }
 
         public bool CanAttack => Vector3.Distance(_playerTransform.position,this.transform.position) < _navMeshAgent.stoppingDistance && _navMeshAgent.velocity==Vector3.zero;
 
 
         private void Awake()
         {
-            _mover = new MoveWithNavMesh(this);
+             Mover = new MoveWithNavMesh(this);
             _animation = new CharacterAnimation(this);
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _health = GetComponent<IHealth>();
@@ -38,12 +40,12 @@ namespace ThirdPersonShooter.Controllers
             _stateMachine = new StateMachine();
         }
 
-        private void Start()
+        private void Start() 
         {
             _playerTransform = FindObjectOfType<PlayerController>().transform;
-
+            
+            ChaseState chaseState = new ChaseState(this, _playerTransform);
             AttackState attackState = new AttackState();
-            ChaseState chaseState = new ChaseState();
             DeadState deadState = new DeadState();
             
             _stateMachine.AddState(chaseState, attackState,() => CanAttack);
@@ -55,10 +57,8 @@ namespace ThirdPersonShooter.Controllers
         }
 
         private void Update()
-        { 
+        {   
             if (_health.IsDead ) return;
-            
-            _mover.MoveAction(_playerTransform.position, 10f); //enemy tam durduğunda attack yapmaya başlıyor
 
             _stateMachine.Tick();
         }

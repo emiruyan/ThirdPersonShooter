@@ -7,9 +7,8 @@ namespace ThirdPersonShooter.Abstracts.Controllers
 {
     public interface IEntityController 
     {
-        public Transform transform { get; }
-
-        public IMover Mover { get; }
+        Transform transform { get; }
+        
     }
 }
 

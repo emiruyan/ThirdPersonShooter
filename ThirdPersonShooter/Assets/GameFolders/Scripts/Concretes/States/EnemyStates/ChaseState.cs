@@ -9,19 +9,20 @@ namespace ThirdPersonShooter.States.EnemyStates
     public class ChaseState : IState
     {
          float _speed = 10f;
-         IEntityController _entityController;
-         Transform _target;
+         IEnemyController _enemyController;
+         
         
-        public ChaseState(IEntityController entityController,Transform target)
+        public ChaseState(IEnemyController enemyController)
         {
-            _entityController = entityController;
-            _target = target;
+            _enemyController = enemyController;
         }
 
         public void OnEnter()
         {
             Debug.Log($"{nameof(ChaseState)} {nameof(OnEnter)}");
         }
+
+        
 
         public void OnExit()
         {
@@ -30,7 +31,17 @@ namespace ThirdPersonShooter.States.EnemyStates
 
         public void Tick()
         {
-          _entityController.Mover.MoveAction(_target.position, _speed);
+          _enemyController.Mover.MoveAction(_enemyController.Target.position, _speed);
+        }
+        
+        public void TickFixed()
+        {
+            
+        }
+
+        public void TickLate()
+        {
+            _enemyController.Animation.MoveAnimation(_enemyController.Magnitude);
         }
     }
 }

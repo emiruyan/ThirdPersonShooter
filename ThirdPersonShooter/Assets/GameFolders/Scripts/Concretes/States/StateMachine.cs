@@ -30,6 +30,16 @@ namespace ThirdPersonShooter.States
             }
             _currentState.Tick();
         }
+        
+        public void TicKFixed()
+        {
+            _currentState.TickFixed();
+        }
+
+        public void TickLate()
+        {
+            _currentState.TickLate();
+        }
 
         private StateTransformer CheckForTransformer()
         {
@@ -60,6 +70,8 @@ namespace ThirdPersonShooter.States
             StateTransformer stateTransformer = new StateTransformer(null, to, condition);
             _anyStateTransformer.Add(stateTransformer);
         }
+
+        
     }
     
 }

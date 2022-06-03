@@ -19,7 +19,7 @@ namespace ThirdPersonShooter.Controllers
         
         
         IInputReader _input; 
-        
+        IMover _mover;
         IRotator _xRotator;
         IRotator _yRotator;
         CharacterAnimation _animation;
@@ -29,15 +29,15 @@ namespace ThirdPersonShooter.Controllers
        
 
         public Transform TurnTransform => _turnTransform;
-        public IMover Mover { get;private set; }
+            
         
 
         
 
         private void Awake()
         {
-            _input = GetComponent<IInputReader>();
-            Mover = new MoveWithCharacterController(this);
+            _input = GetComponent<IInputReader>(); 
+            _mover = new MoveWithCharacterController(this);
             _animation = new CharacterAnimation(this);
             _xRotator = new RotatorX(this);
             _yRotator = new RotatorY(this);
@@ -67,7 +67,7 @@ namespace ThirdPersonShooter.Controllers
 
         void FixedUpdate()
         {
-            Mover.MoveAction(_direction, _moveSpeed);
+            _mover.MoveAction(_direction, _moveSpeed);
             
         }
 

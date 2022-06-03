@@ -19,6 +19,16 @@ namespace ThirdPersonShooter.States.EnemyStates
         {
             
         }
+
+        public void TickFixed()
+        {
+            
+        }
+
+        public void TickLate()
+        {
+            
+        }
     }
 
 }

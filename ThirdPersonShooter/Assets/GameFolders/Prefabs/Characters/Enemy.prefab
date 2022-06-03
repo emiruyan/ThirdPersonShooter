@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd57e784ca501c446a20b00d9f03cfb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 0.3
+  _radius: 0.5
 --- !u!1 &4663682661138954519
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ad7261829aab546b570ec462837447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 0}
 --- !u!136 &6438864608560259707
 CapsuleCollider:
   m_ObjectHideFlags: 0

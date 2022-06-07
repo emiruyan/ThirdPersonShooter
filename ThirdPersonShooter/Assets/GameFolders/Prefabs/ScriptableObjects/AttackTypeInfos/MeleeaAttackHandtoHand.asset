@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MeleeaAttackHandtoHand
   m_EditorClassIdentifier: 
   _attackType: 1
-  _damage: 1
+  _damage: 10
   _floatValue: 0.5
   _attackMaxDelay: 1
   _layerMask:

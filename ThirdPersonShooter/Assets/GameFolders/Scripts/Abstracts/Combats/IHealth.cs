@@ -8,6 +8,7 @@ namespace ThirdPersonShooter.Abstracts.Combats
     {
         public bool IsDead { get; }
          void TakeDamage(int damage);
+         event System.Action OnDead;
     }
 }
 

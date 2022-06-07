@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ThirdPersonShooter.Abstracts.Combats;
 using ThirdPersonShooter.Abstracts.Controllers;
 using ThirdPersonShooter.Abstracts.Inputs;
 using ThirdPersonShooter.Abstracts.Movements;
@@ -18,7 +19,8 @@ namespace ThirdPersonShooter.Controllers
         [SerializeField] Transform _turnTransform; 
         
         
-        IInputReader _input; 
+        IInputReader _input;
+        IHealth _health;
         IMover _mover;
         IRotator _xRotator;
         IRotator _yRotator;
@@ -36,16 +38,29 @@ namespace ThirdPersonShooter.Controllers
 
         private void Awake()
         {
-            _input = GetComponent<IInputReader>(); 
+            _input = GetComponent<IInputReader>();
+            _health = GetComponent<IHealth>();
             _mover = new MoveWithCharacterController(this);
             _animation = new CharacterAnimation(this);
             _xRotator = new RotatorX(this);
             _yRotator = new RotatorY(this);
             _ınventory = GetComponent<InventoryController>();
-        } 
+        }
+
+        private void OnEnable()
+        {
+            _health.OnDead += () => _animation.DeadAnimation("death");
+        }
+
+        private void OnDisable()
+        {
+            
+        }
 
         void Update()
         {
+            if (_health.IsDead) return;
+
             _direction = _input.Direction;
             
             
@@ -67,14 +82,18 @@ namespace ThirdPersonShooter.Controllers
 
         void FixedUpdate()
         {
+            if (_health.IsDead) return;
+            
             _mover.MoveAction(_direction, _moveSpeed);
             
         }
 
         private void LateUpdate()
         {
-             _animation.MoveAnimation(_direction.magnitude);
-             _animation.AttackAnimation(_input.IsAttackButtonPress); 
+            if (_health.IsDead) return;  
+
+            _animation.MoveAnimation(_direction.magnitude);
+            _animation.AttackAnimation(_input.IsAttackButtonPress); 
         }
     }
 }

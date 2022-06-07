@@ -102,9 +102,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3788062313065194543}
   - component: {fileID: 1395010175965104153}
+  - component: {fileID: 8291759227770734057}
+  - component: {fileID: 1289184838349124910}
   - component: {fileID: 6438864608560259707}
   - component: {fileID: 6438864608560259708}
-  - component: {fileID: 8291759227770734057}
   - component: {fileID: 2429550911465611099}
   m_Layer: 0
   m_Name: Enemy
@@ -142,6 +143,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ad7261829aab546b570ec462837447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8291759227770734057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6626521064299325145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190613c7d93da8348a91c6a21d9ed3dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthInfo: {fileID: 11400000, guid: d64596681c48769468cb80f1d56b0e1b, type: 2}
+--- !u!114 &1289184838349124910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6626521064299325145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd8b201c2e1f2e545b1ee390eb7e6bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _delayTime: 5
 --- !u!136 &6438864608560259707
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -178,19 +205,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &8291759227770734057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6626521064299325145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 190613c7d93da8348a91c6a21d9ed3dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthInfo: {fileID: 11400000, guid: d64596681c48769468cb80f1d56b0e1b, type: 2}
 --- !u!114 &2429550911465611099
 MonoBehaviour:
   m_ObjectHideFlags: 0

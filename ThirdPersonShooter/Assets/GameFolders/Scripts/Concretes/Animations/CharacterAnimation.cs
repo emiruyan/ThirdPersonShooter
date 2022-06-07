@@ -25,9 +25,12 @@ namespace ThirdPersonShooter.Animations
 
         public void AttackAnimation(bool canAttack)
         {
-            
-            
             _animator.SetBool("isAttack",canAttack);
+        }
+
+        public void DeadAnimation()
+        {
+            _animator.SetTrigger("dying");
         }
     } 
 }

@@ -27,11 +27,13 @@ namespace ThirdPersonShooter.States.EnemyStates
         public void OnExit()
         {
             Debug.Log($"{nameof(ChaseState)} {nameof(OnExit)}");
+            _enemyController.Mover.MoveAction(_enemyController.transform.position, 0f);
         }
 
         public void Tick()
         {
           _enemyController.Mover.MoveAction(_enemyController.Target.position, _speed);
+          
         }
         
         public void TickFixed()

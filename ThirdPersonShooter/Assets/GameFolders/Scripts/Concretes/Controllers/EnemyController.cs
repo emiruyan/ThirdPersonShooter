@@ -5,6 +5,7 @@ using ThirdPersonShooter.Abstracts.Combats;
 using ThirdPersonShooter.Abstracts.Controllers;
 using ThirdPersonShooter.Abstracts.Movements;
 using ThirdPersonShooter.Animations;
+using ThirdPersonShooter.Combats;
 using ThirdPersonShooter.Movements;
 using ThirdPersonShooter.States;
 using ThirdPersonShooter.States.EnemyStates;
@@ -24,6 +25,7 @@ namespace ThirdPersonShooter.Controllers
         public IMover Mover { get;private set; }
         public InventoryController Inventory { get; private set; }
         public CharacterAnimation Animation { get; private set; }
+        public Dead Dead { get; private set; }
         public Transform Target { get; set; }
         public float Magnitude => _navMeshAgent.velocity.magnitude;
 
@@ -40,7 +42,8 @@ namespace ThirdPersonShooter.Controllers
             Mover = new MoveWithNavMesh(this);
             Animation = new CharacterAnimation(this);
             Inventory = GetComponent<InventoryController>();
-            
+            Dead = GetComponent<Dead>(); 
+
         }
 
         private void Start() 

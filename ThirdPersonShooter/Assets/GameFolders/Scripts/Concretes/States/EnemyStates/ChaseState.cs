@@ -21,9 +21,7 @@ namespace ThirdPersonShooter.States.EnemyStates
         {
             Debug.Log($"{nameof(ChaseState)} {nameof(OnEnter)}");
         }
-
         
-
         public void OnExit()
         {
             Debug.Log($"{nameof(ChaseState)} {nameof(OnExit)}");

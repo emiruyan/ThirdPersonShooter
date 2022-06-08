@@ -11,7 +11,7 @@ namespace ThirdPersonShooter.ScriptableObjects
         Range,Melee
     }
     
-    [CreateAssetMenu(fileName = "Attack Info",menuName = "AttackInformation/Create New",order = 51)]
+    [CreateAssetMenu(fileName = "Attack Info",menuName = "Combat/Attack Information/Create New")]
     public class AttackSO : ScriptableObject
     {
         [SerializeField] AttackTypeEnum _attackType;

@@ -58,7 +58,7 @@ namespace ThirdPersonShooter.Controllers
             _stateMachine.AddState(attackState, chaseState, ()=> !CanAttack);
             _stateMachine.AddAnyState(deadState, () => _health.IsDead);
             
-            _stateMachine.SetState(chaseState);
+            _stateMachine.SetState(attackState);
 
         }
 

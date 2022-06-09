@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ThirdPersonShooter.Managers;
 using ThirdPersonShooter.ScriptableObjects;
 using UnityEngine;
 
@@ -23,7 +24,7 @@ namespace  ThirdPersonShooter.Controllers
         {
             _currentTime += Time.deltaTime;
 
-            if (_currentTime > _maxTime)
+            if (_currentTime > _maxTime && EnemyManager.Instance.CanSpawn)
             {
                 Spawn();
             }
@@ -31,7 +32,9 @@ namespace  ThirdPersonShooter.Controllers
 
         private void Spawn()
         {
-            Instantiate(_spawnInfo.EnemyPrefab, transform.position, Quaternion.identity);
+           EnemyController enemyController = Instantiate(_spawnInfo.EnemyPrefab, transform.position, Quaternion.identity);
+           EnemyManager.Instance.AddEnemyController(enemyController);
+           
 
             _currentTime = 0f;
             _maxTime = _spawnInfo.RandomSpawnMaxTime; 

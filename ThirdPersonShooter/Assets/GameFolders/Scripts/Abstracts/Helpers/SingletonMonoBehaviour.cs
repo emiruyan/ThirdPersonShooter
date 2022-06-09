@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+namespace ThirdPersonShooter.Abstracts.Helpers
+{
+    public abstract class SingletonMonoBehaviour<T>: MonoBehaviour where T: Component
+    {
+        public static T Instance { get; private set; }
+
+        protected void AddSingletonThisGameObject(T instance)
+        {
+            if (Instance ==null)
+            {
+                Instance = instance;
+                DontDestroyOnLoad(this.gameObject);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+        }
+    }
+}
+

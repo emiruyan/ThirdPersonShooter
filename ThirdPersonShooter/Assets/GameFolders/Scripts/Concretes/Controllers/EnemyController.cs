@@ -6,6 +6,7 @@ using ThirdPersonShooter.Abstracts.Controllers;
 using ThirdPersonShooter.Abstracts.Movements;
 using ThirdPersonShooter.Animations;
 using ThirdPersonShooter.Combats;
+using ThirdPersonShooter.Managers;
 using ThirdPersonShooter.Movements;
 using ThirdPersonShooter.States;
 using ThirdPersonShooter.States.EnemyStates;
@@ -77,6 +78,11 @@ namespace ThirdPersonShooter.Controllers
         {
             _stateMachine.TickLate();
 
+        }
+
+        private void OnDestroy() //öldürdüğümüz enemylerin tekrar spawnlanması için 
+        {
+            EnemyManager.Instance.RemoveEnemyController(this);
         }
     }
 }

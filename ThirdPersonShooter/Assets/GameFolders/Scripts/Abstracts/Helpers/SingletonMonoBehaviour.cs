@@ -9,7 +9,7 @@ namespace ThirdPersonShooter.Abstracts.Helpers
     {
         public static T Instance { get; private set; }
 
-        protected void AddSingletonThisGameObject(T instance)
+        protected void SetSingletonThisGameObject(T instance)
         {
             if (Instance ==null)
             {

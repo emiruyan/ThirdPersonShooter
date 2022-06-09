@@ -17,7 +17,7 @@ namespace ThirdPersonShooter.Managers
 
         private void Awake()
         {
-            AddSingletonThisGameObject(this);
+            SetSingletonThisGameObject(this);
 
             _enemies = new List<EnemyController>();
         }

@@ -12,7 +12,7 @@ namespace ThirdPersonShooter.Managers
         [SerializeField] int _maxCountOnGame = 50;  //oyun ekranın toplamda 50 enemy olacak ve bittince 50ye tamamlancank şekilde spawnlanacak
         [SerializeField] List<EnemyController> _enemies;
 
-        public bool CanSpawn => _maxCountOnGame > _enemies.Count;
+        public bool CanSpawn => _maxCountOnGame > _enemies.Count;   
         
 
         private void Awake()
@@ -31,6 +31,7 @@ namespace ThirdPersonShooter.Managers
         public void RemoveEnemyController(EnemyController enemyController)
         {
             _enemies.Remove(enemyController);
+            GameManager.Instance.DecreaseWaveCount();
         }
     }
 }

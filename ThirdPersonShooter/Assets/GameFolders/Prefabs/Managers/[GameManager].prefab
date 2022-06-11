@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7aad1a4bce2d1449ad4ed7bee0e322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _waitNextLevel: 10
+  _waveMultiple: 1.2
+  _maxWaveBoundaryCount: 20

@@ -9,16 +9,16 @@ namespace ThirdPersonShooter.Managers
 {
     public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
     {
-        [SerializeField] int _maxCountOnGame = 50;  //oyun ekranın toplamda 50 enemy olacak ve bittince 50ye tamamlancank şekilde spawnlanacak
+        [SerializeField] int _maxCountOnGame = 50;   //oyun ekranın toplamda 50 enemy olacak ve bittikce 50ye tamamlancank şekilde spawnlanacak
         [SerializeField] List<EnemyController> _enemies;
 
-        public bool CanSpawn => _maxCountOnGame > _enemies.Count;   
+        public bool CanSpawn => _maxCountOnGame > _enemies.Count;
+        public bool IsListEmpty => _enemies.Count <= 0;   
         
 
         private void Awake()
         {
             SetSingletonThisGameObject(this);
-
             _enemies = new List<EnemyController>();
         }
 
@@ -31,7 +31,7 @@ namespace ThirdPersonShooter.Managers
         public void RemoveEnemyController(EnemyController enemyController)
         {
             _enemies.Remove(enemyController);
-            GameManager.Instance.DecreaseWaveCount();
+            GameManager.Instance.DecreaseWaveCount(); 
         }
     }
 }

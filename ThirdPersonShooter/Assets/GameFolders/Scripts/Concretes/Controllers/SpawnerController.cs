@@ -10,11 +10,10 @@ namespace  ThirdPersonShooter.Controllers
     public class SpawnerController : MonoBehaviour
     {
         [SerializeField] SpawnInfoSO _spawnInfo;
-        
+        [SerializeField] float _maxTime;
         
         float _currentTime = 0f;
-        float _maxTime;
-
+        
         private void Start()
         {
             _maxTime = _spawnInfo.RandomSpawnMaxTime;

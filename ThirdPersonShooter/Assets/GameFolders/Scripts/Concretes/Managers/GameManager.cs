@@ -3,19 +3,29 @@ using System.Collections;
 using ThirdPersonShooter.Abstracts.Helpers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace ThirdPersonShooter.Managers
 {
     public class GameManager : SingletonMonoBehaviour<GameManager>
     {
-        [SerializeField] int _waveMaxCount = 100;
+        [SerializeField] float _waitNextLevel = 10f;
+        [SerializeField] float _waveMultiple = 1.2f;
+        [SerializeField] int _maxWaveBoundaryCount = 50;
+        
+        int _currentWaveMaxCount;
 
         
-        public bool IsWaveFinished => _waveMaxCount <= 0; 
+        public bool IsWaveFinished => _currentWaveMaxCount <= 0; 
 
         private void Awake()
         {
-            SetSingletonThisGameObject(this); 
+            SetSingletonThisGameObject(this);
+        }
+
+        private void Start()
+        {
+            _currentWaveMaxCount = _maxWaveBoundaryCount;
         }
 
         public void LoadLevel(string name)
@@ -32,10 +42,22 @@ namespace ThirdPersonShooter.Managers
         {
             if (IsWaveFinished)
             {
-                return;
+                if (EnemyManager.Instance.IsListEmpty)
+                {
+                    StartCoroutine(StartNextWaveAsync()); 
+                }
             }
-            
-            _waveMaxCount--;
+            else
+            {
+                _currentWaveMaxCount--;
+            }
+        }
+
+        private IEnumerator StartNextWaveAsync()
+        {
+             yield return new WaitForSeconds(_waitNextLevel);
+            _maxWaveBoundaryCount = System.Convert.ToInt32(_maxWaveBoundaryCount * _waveMultiple);
+            _currentWaveMaxCount = _maxWaveBoundaryCount;
         }
     }
 }

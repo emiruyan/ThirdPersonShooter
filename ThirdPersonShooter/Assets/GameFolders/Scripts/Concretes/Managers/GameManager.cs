@@ -9,13 +9,15 @@ namespace ThirdPersonShooter.Managers
 {
     public class GameManager : SingletonMonoBehaviour<GameManager>
     {
+        [SerializeField] int _waveLevel = 1;
         [SerializeField] float _waitNextLevel = 10f;
         [SerializeField] float _waveMultiple = 1.2f;
         [SerializeField] int _maxWaveBoundaryCount = 50;
         
         int _currentWaveMaxCount;
+        public event System.Action<int> OnNextWave; 
 
-        
+
         public bool IsWaveFinished => _currentWaveMaxCount <= 0; 
 
         private void Awake()
@@ -50,16 +52,18 @@ namespace ThirdPersonShooter.Managers
             else
             {
                 _currentWaveMaxCount--;
-            }
+            }   
         }
 
         private IEnumerator StartNextWaveAsync()
         {
-             yield return new WaitForSeconds(_waitNextLevel);
+             yield return new WaitForSeconds(_waitNextLevel);   
             _maxWaveBoundaryCount = System.Convert.ToInt32(_maxWaveBoundaryCount * _waveMultiple);
             _currentWaveMaxCount = _maxWaveBoundaryCount;
+            _waveLevel++;
+            OnNextWave?.Invoke(_waveLevel);
         }
     }
 }
-
+ 
 

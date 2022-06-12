@@ -1719,7 +1719,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2604171848675641868, guid: d260c9c0a7c5eca419abf7ebb4fe95a2, type: 3}
       propertyPath: _maxCountOnGame
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3201395020139251162, guid: d260c9c0a7c5eca419abf7ebb4fe95a2, type: 3}
       propertyPath: m_RootOrder

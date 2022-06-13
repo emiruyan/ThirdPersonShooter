@@ -15,7 +15,7 @@ namespace ThirdPersonShooter.Managers
         [SerializeField] int _maxWaveBoundaryCount = 50;
         
         int _currentWaveMaxCount;
-        public event System.Action<int> OnNextWave; 
+        public event System.Action<int> OnNextWave;  
 
 
         public bool IsWaveFinished => _currentWaveMaxCount <= 0; 

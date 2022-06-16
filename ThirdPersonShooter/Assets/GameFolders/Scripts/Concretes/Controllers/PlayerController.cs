@@ -16,7 +16,10 @@ namespace ThirdPersonShooter.Controllers
         [Header("Movement Informations")] 
         [SerializeField] float _moveSpeed = 10f;
         [SerializeField] float _turnSpeed = 10f;
-        [SerializeField] Transform _turnTransform; 
+        [SerializeField] Transform _turnTransform;
+
+        [Header("Uis")] 
+        [SerializeField] GameObject _gameOverPanel;
         
         
         IInputReader _input;
@@ -25,7 +28,7 @@ namespace ThirdPersonShooter.Controllers
         IRotator _xRotator;
         IRotator _yRotator;
         CharacterAnimation _animation;
-        private InventoryController _ınventory;
+        InventoryController _ınventory;
         
         Vector3 _direction;
        
@@ -33,7 +36,6 @@ namespace ThirdPersonShooter.Controllers
         public Transform TurnTransform => _turnTransform;
             
         
-
         
 
         private void Awake()
@@ -49,14 +51,13 @@ namespace ThirdPersonShooter.Controllers
 
         private void OnEnable()
         {
-            _health.OnDead += () => _animation.DeadAnimation("death");
+            _health.OnDead += () =>
+            {
+                _animation.DeadAnimation("death");
+                _gameOverPanel.SetActive(true);
+            };
         }
-
-        private void OnDisable()
-        {
-            
-        }
-
+        
         void Update()
         {
             if (_health.IsDead) return;

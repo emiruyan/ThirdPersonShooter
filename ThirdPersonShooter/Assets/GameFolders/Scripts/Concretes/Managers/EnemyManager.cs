@@ -33,6 +33,15 @@ namespace ThirdPersonShooter.Managers
             _enemies.Remove(enemyController);
             GameManager.Instance.DecreaseWaveCount(); 
         }
+
+        public void DestroyAllEnemies()
+        {
+            foreach (EnemyController enemyController in _enemies)
+            {
+                Destroy(enemyController.gameObject);
+            }
+            _enemies.Clear();
+        }
     }
 }
 

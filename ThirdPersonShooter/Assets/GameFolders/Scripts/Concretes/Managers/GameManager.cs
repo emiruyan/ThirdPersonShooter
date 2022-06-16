@@ -72,6 +72,20 @@ namespace ThirdPersonShooter.Managers
         {
             _playerCount++;
         }
+
+        public void LoadReturnMenu()
+        {
+            if (_playerCount > 1)
+            {
+                _playerCount--;
+            }
+            else
+            {
+                EnemyManager.Instance.DestroyAllEnemies();
+                _playerCount = 0;
+                LoadLevel("Menu");
+            }
+        }
     }
 }
  

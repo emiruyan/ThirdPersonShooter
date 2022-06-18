@@ -8,7 +8,7 @@ namespace ThirdPersonShooter.Abstracts.Uis
         Button _button;
 
         private void Awake()
-        {
+        {   
             _button = GetComponent<Button>();
         }
 

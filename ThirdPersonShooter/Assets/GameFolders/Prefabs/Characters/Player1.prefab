@@ -91,6 +91,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2316084381363547453, guid: 205bf332a5ceb864fa79879c575fd367, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2647350916181193430, guid: 205bf332a5ceb864fa79879c575fd367, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -102,6 +106,18 @@ PrefabInstance:
     - target: {fileID: 3021034636048225248, guid: 205bf332a5ceb864fa79879c575fd367, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235004726237618210, guid: 205bf332a5ceb864fa79879c575fd367, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.62399995
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235004726237618210, guid: 205bf332a5ceb864fa79879c575fd367, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.0556126
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235004726237618210, guid: 205bf332a5ceb864fa79879c575fd367, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.9084663
       objectReference: {fileID: 0}
     - target: {fileID: 3235004726237618213, guid: 205bf332a5ceb864fa79879c575fd367, type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -310,7 +326,7 @@ PrefabInstance:
     - target: {fileID: 3464363375578785626, guid: 205bf332a5ceb864fa79879c575fd367, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2644726763499002184}
+      objectReference: {fileID: 3235004726449832407, guid: 205bf332a5ceb864fa79879c575fd367, type: 3}
     - target: {fileID: 3464363375578785626, guid: 205bf332a5ceb864fa79879c575fd367, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetActive
@@ -463,6 +479,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8700379063822629483, guid: 205bf332a5ceb864fa79879c575fd367, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8780828725804780201, guid: 205bf332a5ceb864fa79879c575fd367, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -477,8 +497,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 205bf332a5ceb864fa79879c575fd367, type: 3}
---- !u!1 &2644726763499002184 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3235004726449832407, guid: 205bf332a5ceb864fa79879c575fd367, type: 3}
-  m_PrefabInstance: {fileID: 600948328163907743}
-  m_PrefabAsset: {fileID: 0}

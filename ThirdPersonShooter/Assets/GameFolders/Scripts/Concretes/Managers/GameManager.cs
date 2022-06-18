@@ -65,7 +65,7 @@ namespace ThirdPersonShooter.Managers
             _maxWaveBoundaryCount = System.Convert.ToInt32(_maxWaveBoundaryCount * _waveMultiple);
             _currentWaveMaxCount = _maxWaveBoundaryCount;
             _waveLevel++;
-            OnNextWave?.Invoke(_waveLevel);
+            OnNextWave?.Invoke(_waveLevel);     
         }
 
         public void IncreasePlayerCount()
@@ -81,9 +81,10 @@ namespace ThirdPersonShooter.Managers
             }
             else
             {
-                EnemyManager.Instance.DestroyAllEnemies();
                 _playerCount = 0;
+                EnemyManager.Instance.DestroyAllEnemies();
                 LoadLevel("Menu");
+                
             }
         }
     }

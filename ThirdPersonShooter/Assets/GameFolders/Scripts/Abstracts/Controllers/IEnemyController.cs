@@ -18,6 +18,8 @@ namespace ThirdPersonShooter.Abstracts.Controllers
 
         Transform Target { get; set; } 
         float Magnitude { get; }
+        void FindNearestTarget();
+
     } 
 }
 

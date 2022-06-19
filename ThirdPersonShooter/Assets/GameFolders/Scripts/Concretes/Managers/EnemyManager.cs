@@ -11,6 +11,8 @@ namespace ThirdPersonShooter.Managers
     {
         [SerializeField] int _maxCountOnGame = 50;   //oyun ekranın toplamda 50 enemy olacak ve bittikce 50ye tamamlancank şekilde spawnlanacak
         [SerializeField] List<EnemyController> _enemies;
+        
+        public  List<Transform> Targets { get; private set; }
 
         public bool CanSpawn => _maxCountOnGame > _enemies.Count;
         public bool IsListEmpty => _enemies.Count <= 0;   
@@ -20,6 +22,7 @@ namespace ThirdPersonShooter.Managers
         {
             SetSingletonThisGameObject(this);
             _enemies = new List<EnemyController>();
+            Targets = new List<Transform>();
         }
 
         public void AddEnemyController(EnemyController enemyController)

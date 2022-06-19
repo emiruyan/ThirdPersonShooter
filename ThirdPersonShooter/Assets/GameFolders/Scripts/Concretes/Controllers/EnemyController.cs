@@ -31,9 +31,8 @@ namespace ThirdPersonShooter.Controllers
         public float Magnitude => _navMeshAgent.velocity.magnitude;
 
         public bool CanAttack => Vector3.Distance(Target.position,this.transform.position) < _navMeshAgent.stoppingDistance && _navMeshAgent.velocity==Vector3.zero;
-
-
-        private void Awake()
+        
+        void Awake()
         { 
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _health = GetComponent<IHealth>();
@@ -43,14 +42,13 @@ namespace ThirdPersonShooter.Controllers
             Mover = new MoveWithNavMesh(this);
             Animation = new CharacterAnimation(this);
             Inventory = GetComponent<InventoryController>();
-            Dead = GetComponent<Dead>(); 
-
+            Dead = GetComponent<Dead>();
         }
 
-        private void Start() 
+        void Start()
         {
-            Target = FindObjectOfType<PlayerController>().transform;
-            
+            FindNearestTarget();
+
             ChaseState chaseState = new ChaseState(this);
             AttackState attackState = new AttackState(this);
             DeadState deadState = new DeadState(this);
@@ -60,30 +58,45 @@ namespace ThirdPersonShooter.Controllers
             _stateMachine.AddAnyState(deadState, () => _health.IsDead);
             
             _stateMachine.SetState(attackState);
-
         }
-
-        private void Update()
+        
+        void Update()
         {
             _stateMachine.Tick();
         }
 
-        private void FixedUpdate()
+        void FixedUpdate()
         {
             _stateMachine.TicKFixed();
-
         }
 
         void LateUpdate()
         {
             _stateMachine.TickLate();
-
         }
 
-        private void OnDestroy() //öldürdüğümüz enemylerin tekrar spawnlanması için 
+        void OnDestroy() //öldürdüğümüz enemylerin tekrar spawnlanması için 
         {
             EnemyManager.Instance.RemoveEnemyController(this);
         }
+        public void FindNearestTarget()
+        {
+            Transform nearest = EnemyManager.Instance.Targets[0];
+
+            foreach (Transform target in EnemyManager.Instance.Targets)
+            {
+                float nearestValue = Vector3.Distance(nearest.position, this.transform.position);
+                float newValue = Vector3.Distance(target.position, transform.position);
+
+                if (newValue < nearestValue)
+                {
+                    nearest = target;
+                }
+            }
+
+            Target = nearest;
+        }
+        
     }
 }
 

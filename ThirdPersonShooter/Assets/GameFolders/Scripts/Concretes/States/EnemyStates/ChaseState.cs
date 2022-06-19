@@ -36,7 +36,7 @@ namespace ThirdPersonShooter.States.EnemyStates
         
         public void TickFixed()
         {
-            
+            _enemyController.FindNearestTarget();
         }
 
         public void TickLate()

@@ -6,6 +6,7 @@ using ThirdPersonShooter.Abstracts.Controllers;
 using ThirdPersonShooter.Abstracts.Inputs;
 using ThirdPersonShooter.Abstracts.Movements;
 using ThirdPersonShooter.Animations;
+using ThirdPersonShooter.Managers;
 using ThirdPersonShooter.Movements;
 using UnityEngine;
 
@@ -56,8 +57,15 @@ namespace ThirdPersonShooter.Controllers
                 _animation.DeadAnimation("death");
                 _gameOverPanel.SetActive(true);
             };
+            
+            EnemyManager.Instance.Targets.Add(this.transform);
         }
-        
+
+        private void OnDisable()
+        {
+            EnemyManager.Instance.Targets.Remove(this.transform);
+        }
+
         void Update()
         {
             if (_health.IsDead) return;

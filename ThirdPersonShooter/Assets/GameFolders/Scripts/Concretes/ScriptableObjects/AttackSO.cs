@@ -20,11 +20,13 @@ namespace ThirdPersonShooter.ScriptableObjects
         [SerializeField] float _attackMaxDelay = 0.25f;
         [SerializeField] LayerMask _layerMask;
         [SerializeField] AnimatorOverrideController _animatorOverride;
+        [SerializeField] AudioClip _clip;
         public int Damage => _damage;
         public float FloatValue => _floatValue; 
         public LayerMask LayerMask => _layerMask;
         public float AttackMaxDelay => _attackMaxDelay;
         public AnimatorOverrideController AnimatorOverride => _animatorOverride;
+        public AudioClip Clip => _clip;
 
         public IAttackType GetAttackType(Transform transform)
         {

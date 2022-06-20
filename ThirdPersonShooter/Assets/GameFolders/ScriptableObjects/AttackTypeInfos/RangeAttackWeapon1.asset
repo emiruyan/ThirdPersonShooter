@@ -20,3 +20,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483647
   _animatorOverride: {fileID: 22100000, guid: 89ff55023fb6b654385be45b88f02ac5, type: 2}
+  _clip: {fileID: 8300000, guid: 6e8977724d2410d46ac0e23d79554da9, type: 3}

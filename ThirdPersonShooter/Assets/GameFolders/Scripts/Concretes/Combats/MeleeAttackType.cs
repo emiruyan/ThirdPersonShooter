@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using ThirdPersonShooter.Abstracts.Combats;
+using ThirdPersonShooter.Managers;
 using ThirdPersonShooter.ScriptableObjects;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ namespace ThirdPersonShooter.Combats
         {
             _transformObject = transformObject;
             _attackSo = attackSo;
+            
         }
         
         public void AttackAction()
@@ -29,6 +31,8 @@ namespace ThirdPersonShooter.Combats
                     health.TakeDamage(_attackSo.Damage);
                 }
             }
+            
+            SoundManager.Instance.MeleeAttackSound(_attackSo.Clip,_transformObject.position);
         }
     }
 }

@@ -18,6 +18,7 @@ namespace ThirdPersonShooter.Controllers
         [SerializeField] float _moveSpeed = 10f;
         [SerializeField] float _turnSpeed = 10f;
         [SerializeField] Transform _turnTransform;
+        [SerializeField] Transform _ribTransform;
 
         [Header("Uis")] 
         [SerializeField] GameObject _gameOverPanel;
@@ -28,10 +29,12 @@ namespace ThirdPersonShooter.Controllers
         IMover _mover;
         IRotator _xRotator;
         IRotator _yRotator;
+        IRotator _ribRotator;
         CharacterAnimation _animation;
         InventoryController _ınventory;
         
-        Vector3 _direction;
+        Vector3 _direction; 
+        Vector3 _rotation;
        
 
         public Transform TurnTransform => _turnTransform;
@@ -47,6 +50,7 @@ namespace ThirdPersonShooter.Controllers
             _animation = new CharacterAnimation(this);
             _xRotator = new RotatorX(this);
             _yRotator = new RotatorY(this);
+            _ribRotator = new RibRotator(_ribTransform);
             _ınventory = GetComponent<InventoryController>();
         }
 
@@ -71,10 +75,11 @@ namespace ThirdPersonShooter.Controllers
             if (_health.IsDead) return;
 
             _direction = _input.Direction;
+            _rotation = _input.Rotation;
             
             
-            _xRotator.RotationAction(_input.Rotation.x,_turnSpeed);
-            _yRotator.RotationAction(_input.Rotation.y,_turnSpeed);
+            _xRotator.RotationAction(_rotation.x,_turnSpeed);
+            _yRotator.RotationAction(_rotation.y,_turnSpeed);
 
            
             
@@ -103,6 +108,8 @@ namespace ThirdPersonShooter.Controllers
 
             _animation.MoveAnimation(_direction.magnitude);
             _animation.AttackAnimation(_input.IsAttackButtonPress); 
+            
+            _ribRotator.RotationAction(_rotation.y * -1f,_turnSpeed);
         }
     }
 }

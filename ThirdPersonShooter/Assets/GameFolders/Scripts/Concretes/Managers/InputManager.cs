@@ -44,6 +44,8 @@ namespace ThirdPersonShooter.Managers
             }
             
             _playerInputManager.playerPrefab = _prefabs[_playerIndex];
+
+            _playerInputManager.splitScreen = true;
         }
 
         public void HandleOnLeft()
@@ -56,6 +58,8 @@ namespace ThirdPersonShooter.Managers
             }
             
             _playerInputManager.playerPrefab = _prefabs[_playerIndex];
+            
+            _playerInputManager.splitScreen = false;
             
         }
     }

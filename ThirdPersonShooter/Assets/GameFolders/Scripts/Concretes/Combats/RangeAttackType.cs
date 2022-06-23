@@ -1,24 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using ThirdPersonShooter.Abstracts.Combats;
+using ThirdPersonShooter.Controllers;
 using ThirdPersonShooter.Managers;
 using ThirdPersonShooter.ScriptableObjects;
 using UnityEngine;
 
 namespace ThirdPersonShooter.Combats
 {
-    public class RangeAttackType : IAttackType
+    public class RangeAttackType : MonoBehaviour, IAttackType
     {
-        private Camera _camera;
-        private AttackSO _attackSo;
-           
+        [SerializeField] AttackSO _attackSo;
+        [SerializeField] Camera _camera;
+        [SerializeField] BulletFxController _bulletFx;
+        [SerializeField] Transform _bulletPoint;
         
-        public RangeAttackType(Transform transformObject,AttackSO attackSo)
-        {
-            _camera = transformObject.GetComponent<Camera>();
-            _attackSo = attackSo;
-        }
-        
+        public AttackSO AttackInfo => _attackSo;
+
         public void AttackAction()
         {
             Ray ray = _camera.ViewportPointToRay(Vector3.one / 2f);
@@ -32,10 +30,15 @@ namespace ThirdPersonShooter.Combats
                 {
                     health.TakeDamage(_attackSo.Damage);
                 }
-                
             }
+
+            var bullet = Instantiate(_bulletFx, _bulletPoint.position, _bulletPoint.rotation);
+            bullet.SetDirection(ray.direction);
+            
             SoundManager.Instance.RangeAttackSound(_attackSo.Clip,_camera.transform.position);
         }
+
+        
     }
 }
 

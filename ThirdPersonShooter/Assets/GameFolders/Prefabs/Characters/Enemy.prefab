@@ -55,6 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4089829629676502578}
   - component: {fileID: 2011283167359003828}
+  - component: {fileID: 8698414233183792348}
   m_Layer: 0
   m_Name: Weapon3
   m_TagString: Untagged
@@ -90,6 +91,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canFire: 0
+--- !u!114 &8698414233183792348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4663682661138954519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 873c70731772d454ba53d715a1be586d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _transformObject: {fileID: 4138870031521062127}
   _attackSo: {fileID: 11400000, guid: 866d3bebe1d0d9141ad75077735b90ee, type: 2}
 --- !u!1 &6626521064299325145

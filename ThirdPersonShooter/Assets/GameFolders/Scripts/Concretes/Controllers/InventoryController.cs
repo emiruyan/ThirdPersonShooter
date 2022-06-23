@@ -48,7 +48,7 @@ namespace ThirdPersonShooter.Controllers
                 if (CurrentWeapon == weapon)
                 {
                     weapon.gameObject.SetActive(true);
-                    _animator.runtimeAnimatorController = CurrentWeapon.AttackSo.AnimatorOverride;
+                    _animator.runtimeAnimatorController = CurrentWeapon.AnimatorOverride;
                 }
 
                 else

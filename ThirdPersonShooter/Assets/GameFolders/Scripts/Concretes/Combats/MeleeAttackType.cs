@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using ThirdPersonShooter.Abstracts.Combats;
 using ThirdPersonShooter.Managers;
 using ThirdPersonShooter.ScriptableObjects;
@@ -7,17 +5,11 @@ using UnityEngine;
 
 namespace ThirdPersonShooter.Combats
 {
-    public class MeleeAttackType :IAttackType
+    public class MeleeAttackType :MonoBehaviour, IAttackType
     {
-        private Transform _transformObject;
-        private AttackSO _attackSo;
-        
-        public MeleeAttackType(Transform transformObject, AttackSO attackSo)
-        {
-            _transformObject = transformObject;
-            _attackSo = attackSo;
-            
-        }
+        [SerializeField] Transform _transformObject;
+        [SerializeField] AttackSO _attackSo;
+        public AttackSO AttackInfo => _attackSo;
         
         public void AttackAction()
         {
@@ -34,6 +26,8 @@ namespace ThirdPersonShooter.Combats
             
             SoundManager.Instance.MeleeAttackSound(_attackSo.Clip,_transformObject.position);
         }
+
+        
     }
 }
 
